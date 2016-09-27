@@ -24,4 +24,34 @@
     <servlet-name>CreateContactServlet</servlet-name>
     <url-pattern>/CreateContactServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ResearchContact</display-name>
+    <servlet-name>ResearchContact</servlet-name>
+    <servlet-class>servlets.ResearchContact</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ResearchContact</servlet-name>
+    <url-pattern>/ResearchContact</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateContactServlet</display-name>
+    <servlet-name>UpdateContactServlet</servlet-name>
+    <servlet-class>servlets.UpdateContactServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateContactServlet</servlet-name>
+    <url-pattern>/UpdateContactServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteContactServlet</display-name>
+    <servlet-name>DeleteContactServlet</servlet-name>
+    <servlet-class>servlets.DeleteContactServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteContactServlet</servlet-name>
+    <url-pattern>/DeleteContactServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
