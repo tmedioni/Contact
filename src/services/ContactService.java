@@ -2,10 +2,10 @@ package services;
 
 public class ContactService {
 
-	public void create(long id, String prenom, String nom, String email)
+	public void create(String prenom, String nom, String email)
 	{
 		DAOContact c = new DAOContact();
-		c.create(id, prenom, nom, email);
+		c.create(prenom, nom, email);
 	}
 
 	public void research(long id) {

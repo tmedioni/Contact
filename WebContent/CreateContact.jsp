@@ -17,8 +17,19 @@
 	<input type="text" name="nom"><br/>
 	mail : <br/>
 	<input type="text" name="mail"><br/>
+	addresse : <br/>
+	<input type="text" name="addresse"><br/>
+	tel mobile: <br/>
+	<input type="text" name="mobile"><br/>
+	tel fixe:<br/>
+	<input type="text" name="fixe"><br/>
+	tel bureau:<br/>
+	<input type="text" name="bureau"><br/>
+	groupe:<br>
+	<input type="text" name="groupe"><br/>
 	
 	<input type="submit" value="valider">
+	<input type="reset" value="reset">
 </form>
 
 
