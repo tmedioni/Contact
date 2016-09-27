@@ -38,7 +38,6 @@ public class CreateContactServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		//Verifier input
-		long id = Long.parseLong(request.getParameter("id"));
 		String prenom = request.getParameter("prenom");
 		String nom    = request.getParameter("nom");
 		String mail   = request.getParameter("mail");
@@ -46,7 +45,7 @@ public class CreateContactServlet extends HttpServlet {
 		
 		//Forward input
 		ContactService cs = new ContactService();
-		cs.create(id, prenom, nom , mail);
+		cs.create(prenom, nom , mail);
 		
 	}
 
