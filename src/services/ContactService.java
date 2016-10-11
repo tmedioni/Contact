@@ -2,10 +2,15 @@ package services;
 
 public class ContactService {
 
-	public void create(String prenom, String nom, String email)
+	public void create(String firstname, String lastname, String email)
 	{
 		DAOContact c = new DAOContact();
-		c.create(prenom, nom, email);
+		c.create(firstname, lastname, email);
+	}
+
+	public void create(String firstname, String lastname, String email, String street, String city, String zip, String country) {
+		DAOContact c = new DAOContact();
+		c.create(firstname, lastname, email, street, city, zip, country);
 	}
 
 	public void research(long id) {
@@ -14,9 +19,9 @@ public class ContactService {
 		
 	}
 
-	public void update(long id, String prenom, String nom, String mail) {
+	public void update(long id, String firstname, String lastname, String mail) {
 		DAOContact c = new DAOContact();
-		c.update(id, prenom, nom, mail);
+		c.update(id, firstname, lastname, mail);
 		
 		
 	}

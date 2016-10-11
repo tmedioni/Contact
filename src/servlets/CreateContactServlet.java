@@ -1,5 +1,6 @@
 package servlets;
 
+
 import services.ContactService;
 
 import java.io.IOException;
@@ -42,10 +43,17 @@ public class CreateContactServlet extends HttpServlet {
 		String nom    = request.getParameter("nom");
 		String mail   = request.getParameter("mail");
 		
+		String street = request.getParameter("street");
+		String city = request.getParameter("city");
+		String zip = request.getParameter("zip");
+		String country = request.getParameter("country");
 		
-		//Forward input
+		String mobile = 
+		
 		ContactService cs = new ContactService();
-		cs.create(prenom, nom , mail);
+		cs.create(prenom, nom , mail, street, city, zip, country);
+		
+		response.sendRedirect("index.html");
 		
 	}
 

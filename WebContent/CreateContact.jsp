@@ -9,16 +9,23 @@
 <body>
 
 <form method="post" action="CreateContactServlet">
-	identifiant : <br/>
-	<input type="text" name="id"><br/>
 	prenom : <br/>
 	<input type="text" name="prenom"><br/>
 	nom : <br/>
 	<input type="text" name="nom"><br/>
 	mail : <br/>
 	<input type="text" name="mail"><br/>
-	addresse : <br/>
-	<input type="text" name="addresse"><br/>
+	
+	rue:<br/>
+	<input type="text" name="street">
+	city:
+	<input type="text" name="city">
+	code postal:
+	<input type="text" name="zip">
+	country:
+	<input type="text" name="country"> 
+	<br/>
+	
 	tel mobile: <br/>
 	<input type="text" name="mobile"><br/>
 	tel fixe:<br/>

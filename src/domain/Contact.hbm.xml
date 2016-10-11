@@ -16,6 +16,7 @@
   	 	<column name="email" />
   	 </property>
 
+  	 <many-to-one name="add" column="ID_ADDRESS" unique="true" not-null="false" cascade="all"/>
 
   </class>
 </hibernate-mapping>
