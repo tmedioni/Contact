@@ -6,8 +6,8 @@
   	 <id name="id" type="long" column="ID_ADDRESS" >
    		<generator class="increment"/>
   	 </id>
-  	 
-  	 <property name="street" not-null="true">
+  	 <properties name="p" unique="true">
+  	   	 <property name="street" not-null="true">
   	 	<column name="street" />
   	 </property>
   	 <property name="city" not-null="true">
@@ -19,7 +19,6 @@
   	 <property name="country" not-null="true">
   	 	<column name="country" />
 	</property>
-  	 
-
+  	 </properties>
   </class>
 </hibernate-mapping>

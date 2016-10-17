@@ -54,4 +54,14 @@
     <servlet-name>DeleteContactServlet</servlet-name>
     <url-pattern>/DeleteContactServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreateGroupServlet</display-name>
+    <servlet-name>CreateGroupServlet</servlet-name>
+    <servlet-class>servlets.CreateGroupServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateGroupServlet</servlet-name>
+    <url-pattern>/CreateGroupServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

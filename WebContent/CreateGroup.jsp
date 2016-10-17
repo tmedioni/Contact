@@ -8,11 +8,11 @@
 </head>
 <body>
 
-<a href="CreateContact.jsp">creer contact</a><br/>
-<a href="ResearchContact.jsp">rechercher contact</a><br/>
-<a href="CreateGroup.jsp">creer groupe</a><br/>
-<a href="UpdateContact.jsp">update contact</a><br/>
-<a href="DeleteContact.jsp">delete contact</a><br/>
+<form method="post" action="CreateGroupServlet">
+    group name:<br/>
+    <input type="text" name="name"><br/>
+    <input type="submit" value="ajouter">
+</form>
 
 </body>
 </html>
