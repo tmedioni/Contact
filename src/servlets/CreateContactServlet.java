@@ -48,9 +48,12 @@ public class CreateContactServlet extends HttpServlet {
 		String zip = request.getParameter("zip");
 		String country = request.getParameter("country");
 		
+		String mobile = request.getParameter("mobile");
+		String fixe   = request.getParameter("fixe");
+		String bureau = request.getParameter("bureau");
 		
 		ContactService cs = new ContactService();
-		cs.create(prenom, nom , mail, street, city, zip, country);
+		cs.create(prenom, nom , mail, street, city, zip, country, mobile, fixe, bureau);
 		
 		response.sendRedirect("index.html");
 		

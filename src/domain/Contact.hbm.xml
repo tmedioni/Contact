@@ -16,6 +16,15 @@
   	 	<column name="email" />
   	 </property>
 
+	<set name="books" table="contact_appartenance">
+		<key column="ID_CONTACT"/>
+		<many-to-many class="ContactGroup" column="ID_GROUP" />
+	</set>
+	<set name="phones" inverse="true" cascade="all">
+		<key column="ID_CONTACT"/>
+		<one-to-many class="PhoneNumber"/>
+	</set>
+
   	 <many-to-one name="add" column="ID_ADDRESS" unique="true" not-null="false" cascade="all"/>
 
   </class>

@@ -8,9 +8,10 @@ public class ContactService {
 		c.create(firstname, lastname, email);
 	}
 
-	public void create(String firstname, String lastname, String email, String street, String city, String zip, String country) {
+	public void create(String firstname, String lastname, String email, String street, String city, String zip, String country, String mobile, String fixe, String bureau) {
+
 		DAOContact c = new DAOContact();
-		c.create(firstname, lastname, email, street, city, zip, country);
+		c.create(firstname, lastname, email, street, city, zip, country, mobile, fixe, bureau);
 	}
 
 	public void research(long id) {

@@ -25,6 +25,12 @@ public class PhoneNumber {
 	}
 	public void setContact(Contact contact) {
 		this.contact = contact;
+		
+		for(PhoneNumber n : contact.getPhones())
+		{
+			if(n == this) return;
+		}
+		contact.getPhones().add(this);
 	}
 	public String getPhoneNumber() {
 		return phoneNumber;

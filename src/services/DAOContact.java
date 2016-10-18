@@ -4,6 +4,7 @@ import org.hibernate.Session;
 
 import domain.Address;
 import domain.Contact;
+import domain.PhoneNumber;
 import util.HibernateUtil;
 
 public class DAOContact {
@@ -32,8 +33,8 @@ public class DAOContact {
 	}
 
 	public void create(String firstname, String lastname, String email, String street, String city, String zip,
-			String country) {
-		assert(street != null && city != null  && zip != null  && country != null);
+			String country, String mobile, String fixe, String bureau) {
+		assert(street != null && city != null  && zip != null  && country != null && mobile != null && fixe != null && bureau != null);
 		
 		Contact contact = new Contact();
 		
@@ -49,13 +50,37 @@ public class DAOContact {
 		
 		contact.setAdd(address);
 		
+		
+
+		
 		//Obtention d’une session
 		Session session =
 		HibernateUtil.getSessionFactory().getCurrentSession();
 		//démarrer une transaction
 		session.beginTransaction();
 		//persister l’objet
+
+
+		
+		
+		
+		PhoneNumber p = new PhoneNumber();
+		p.setPhoneKind("mobile");
+		p.setPhoneNumber(mobile);
+		p.setContact(contact);
+		
+		p = new PhoneNumber();
+		p.setPhoneKind("fixe");
+		p.setPhoneNumber(fixe);
+		p.setContact(contact);
+		
+		p = new PhoneNumber();
+		p.setPhoneKind("bureau");
+		p.setPhoneNumber(bureau);
+		p.setContact(contact);
+		
 		session.save(contact);
+		
 		//recharger l’objet à partir de la session
 		contact=(Contact) session.load(Contact.class, contact.getId());
 		//committer la transaction

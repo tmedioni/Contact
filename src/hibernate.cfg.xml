@@ -32,6 +32,8 @@
         <!-- liens vers les fichiers de mapping, indiquez le chemin à partir de src -->
          <mapping resource="domain/Contact.hbm.xml"/>
          <mapping resource="domain/Address.hbm.xml"/>
+         <mapping resource="domain/ContactGroup.hbm.xml"/>
+         <mapping resource="domain/PhoneNumber.hbm.xml"/>
          
     </session-factory>
 </hibernate-configuration>
