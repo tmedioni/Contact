@@ -32,8 +32,11 @@
 	<input type="text" name="fixe"><br/>
 	tel bureau:<br/>
 	<input type="text" name="bureau"><br/>
-	groupe:<br>
+	groupe:<br/>
 	<input type="text" name="groupe"><br/>
+	
+	siret:<br/>
+	<input type="text" name="siret"><br/>
 	
 	<input type="submit" value="valider">
 	<input type="reset" value="reset">

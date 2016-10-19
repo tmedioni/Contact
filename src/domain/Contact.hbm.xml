@@ -2,10 +2,11 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="domain">
-  <class name="Contact" table="contacts">
+  <class name="Contact" table="contacts" discriminator-value="C">
   	 <id name="id" type="long" column="ID_CONTACT" >
    		<generator class="increment"/>
   	 </id>
+  	 <discriminator column="subtype" type="character" />
   	 <property name="firstName" not-null="true">
   	 	<column name="firstname" />
   	 </property>
@@ -15,7 +16,8 @@
   	 <property name="email" not-null="true">
   	 	<column name="email" />
   	 </property>
-
+   
+     
 	<set name="books" table="contact_appartenance">
 		<key column="ID_CONTACT"/>
 		<many-to-many class="ContactGroup" column="ID_GROUP" />
@@ -24,8 +26,12 @@
 		<key column="ID_CONTACT"/>
 		<one-to-many class="PhoneNumber"/>
 	</set>
-
+    
   	 <many-to-one name="add" column="ID_ADDRESS" unique="true" not-null="false" cascade="all"/>
+
+     <subclass name="Entreprise" discriminator-value="E">
+        <property name="numSiret" column="siret"/>
+     </subclass>
 
   </class>
 </hibernate-mapping>

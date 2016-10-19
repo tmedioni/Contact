@@ -4,6 +4,7 @@ import org.hibernate.Session;
 
 import domain.Address;
 import domain.Contact;
+import domain.Entreprise;
 import domain.PhoneNumber;
 import util.HibernateUtil;
 
@@ -32,11 +33,20 @@ public class DAOContact {
 		session.getTransaction().commit();
 	}
 
-	public void create(String firstname, String lastname, String email, String street, String city, String zip,
+	public void create(String firstname, String lastname, String email, String siret, String street, String city, String zip,
 			String country, String mobile, String fixe, String bureau) {
 		assert(street != null && city != null  && zip != null  && country != null && mobile != null && fixe != null && bureau != null);
 		
-		Contact contact = new Contact();
+		Contact contact;
+		
+		if(siret == null || siret.isEmpty())
+			contact = new Contact();
+		else 
+		{
+			Entreprise e = new Entreprise();
+			e.setNumSiret(siret);
+			contact = e;
+		}
 		
 		contact.setFirstName(firstname);
 		contact.setLastName(lastname);
