@@ -8,6 +8,7 @@ public class ContactGroup
 {
 	private long groupId;
 	private String groupName;
+	private int version;
 	Set<Contact> contacts;
 	
 	public ContactGroup() {

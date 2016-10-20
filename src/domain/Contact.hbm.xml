@@ -6,7 +6,10 @@
   	 <id name="id" type="long" column="ID_CONTACT" >
    		<generator class="increment"/>
   	 </id>
+  	 
   	 <discriminator column="subtype" type="character" />
+  	 <version name="version" access="field" column="version" />
+  	 
   	 <property name="firstName" not-null="true">
   	 	<column name="firstname" />
   	 </property>

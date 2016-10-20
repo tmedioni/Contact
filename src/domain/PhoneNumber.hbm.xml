@@ -6,7 +6,7 @@
   	 <id name="id" type="long" column="ID_PHONE" >
    		<generator class="increment"/>
   	 </id>
-  	 
+  	 <version name="version" access="field" column="version" />
   	 <property name="phoneKind" not-null="true">
   	 	<column name="kind"/>
   	 </property>

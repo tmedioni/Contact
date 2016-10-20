@@ -13,6 +13,8 @@ public class Contact
 	private Set<PhoneNumber> phones;
 	private Address add;
 	
+	private int version;
+	
 	
 	
 	public Contact() {

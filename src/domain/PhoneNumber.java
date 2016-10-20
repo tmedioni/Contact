@@ -5,7 +5,7 @@ public class PhoneNumber {
 	private String phoneKind;
 	private String phoneNumber;
 	private Contact contact;
-	
+	private int version;
 	
 	
 	public long getId() {
