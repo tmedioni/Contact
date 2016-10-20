@@ -64,4 +64,14 @@
     <servlet-name>CreateGroupServlet</servlet-name>
     <url-pattern>/CreateGroupServlet</url-pattern>
   </servlet-mapping>
+  <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+  </listener>
+  <listener>
+        <listener-class>
+            org.springframework.web.context.request.RequestContextListener
+        </listener-class>
+  </listener>
 </web-app>
