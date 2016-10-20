@@ -2,3 +2,4 @@
 */lib/
 build/
 WebContent/WEB-INF/lib/
+.springBeans
