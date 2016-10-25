@@ -13,6 +13,9 @@
 
 	<bean id="beanAddress" class="domain.Address">
 		<property name="street" value="jussieu" />
-	
+		<property name="city" value="Paris" />
+		<property name="zip" value="75005" />
+		<property name="country" value="France"/>
 	</bean>
+	
 </beans>
