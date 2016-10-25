@@ -65,13 +65,23 @@
     <url-pattern>/CreateGroupServlet</url-pattern>
   </servlet-mapping>
   <listener>
-        <listener-class>
+    <listener-class>
             org.springframework.web.context.ContextLoaderListener
         </listener-class>
   </listener>
   <listener>
-        <listener-class>
+    <listener-class>
             org.springframework.web.context.request.RequestContextListener
         </listener-class>
   </listener>
+  <servlet>
+    <description></description>
+    <display-name>TestingSpringServlet</display-name>
+    <servlet-name>TestingSpringServlet</servlet-name>
+    <servlet-class>servlets.TestingSpringServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TestingSpringServlet</servlet-name>
+    <url-pattern>/TestingSpringServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

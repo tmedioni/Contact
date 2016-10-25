@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="beanContact" class="domain.Contact" >
+    	<property name="firstName" value="etienne" />
+    	<property name="lastName" value="dao" />
+    	<property name="email" value="etienne.dao@gmail.com" />
+  		
+  		<property name="add" ref="beanAddress"  />
+    </bean>    
+
+	<bean id="beanAddress" class="domain.Address">
+		<property name="street" value="jussieu" />
+	
+	</bean>
+</beans>

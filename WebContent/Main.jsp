@@ -14,5 +14,7 @@
 <a href="UpdateContact.jsp">update contact</a><br/>
 <a href="DeleteContact.jsp">delete contact</a><br/>
 
+<a href="TestingSpringServlet">Test spring</a><br/>
+
 </body>
 </html>

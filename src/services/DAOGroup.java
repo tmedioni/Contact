@@ -6,8 +6,11 @@ import org.hibernate.Session;
 import domain.ContactGroup;
 import util.HibernateUtil;
 
-public class DAOGroup {
+public class DAOGroup implements IDAOGroup {
 
+	/* (non-Javadoc)
+	 * @see services.IDAOGroup#create(java.lang.String)
+	 */
 	public ContactGroup create(String name) {
 		ContactGroup group = new ContactGroup();
 		

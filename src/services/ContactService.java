@@ -1,36 +1,72 @@
 package services;
 
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import domain.Address;
+
+
 public class ContactService {
 
+	/**********************************************************************************************************/
+	
 	public void create(String firstname, String lastname, String email)
 	{
-		DAOContact c = new DAOContact();
+		
+		ApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"applicationContext.xml"});
+		IDAOContact c = (IDAOContact) context.getBean("daocontact");
+		
 		c.create(firstname, lastname, email);
 	}
 
+	public void create(String firstname, String lastname, String email, Address add) {
+		
+		ApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"applicationContext.xml"});
+		IDAOContact c = (IDAOContact) context.getBean("daocontact");
+		
+		c.create(firstname, lastname, email, add);
+		
+	}
+	
 	public void create(String firstname, String lastname, String email, String siret,
 			String street, String city, String zip, String country, String mobile, String fixe, String bureau) {
 
-		DAOContact c = new DAOContact();
+		ApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"applicationContext.xml"});
+		IDAOContact c = (IDAOContact) context.getBean("daocontact");
+		
 		c.create(firstname, lastname, email, siret, street, city, zip, country, mobile, fixe, bureau);
 	}
 
+	/**************************************************************************************************************/
+	
 	public void research(long id) {
-		DAOContact c = new DAOContact();
+		
+		ApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"applicationContext.xml"});
+		IDAOContact c = (IDAOContact) context.getBean("daocontact");
+		
 		c.research(id);
 		
 	}
 
 	public void update(long id, String firstname, String lastname, String mail) {
-		DAOContact c = new DAOContact();
+		
+		ApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"applicationContext.xml"});
+		IDAOContact c = (IDAOContact) context.getBean("daocontact");
+		
 		c.update(id, firstname, lastname, mail);
 		
 		
 	}
 
 	public void delete(long id) {
-		DAOContact c = new DAOContact();
+		
+		ApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"applicationContext.xml"});
+		IDAOContact c = (IDAOContact) context.getBean("daocontact");
+		
 		c.delete(id);
 		
-	}	
+	}
+
+	
 }
