@@ -153,7 +153,24 @@ public class DAOContact implements IDAOContact {
 	 * @see services.IDAOContact#update(long, java.lang.String, java.lang.String, java.lang.String)
 	 */
 	public void update(long id, String prenom, String nom, String mail) {
-
+		Contact contact = new Contact();
+		
+		//Obtention d’une session
+		Session session =
+		HibernateUtil.getSessionFactory().getCurrentSession();
+		//démarrer une transaction
+		session.beginTransaction();
+		
+		// Fetch contact by id
+		contact = (Contact) session.get(Contact.class, id);
+		// Update contact infos
+		contact.setLastName(prenom);
+		contact.setFirstName(nom);
+		contact.setEmail(mail);
+		
+		// Delete Contact number id
+		session.update(contact);
+		session.getTransaction().commit();		
 	}
 
 	/* (non-Javadoc)
