@@ -135,19 +135,17 @@ public class DAOContact implements IDAOContact {
 	 * @see services.IDAOContact#research(long)
 	 */
 	public void research(long id) {
+		Contact contact = new Contact();
+		
 		//Obtention d’une session
 		Session session =
 		HibernateUtil.getSessionFactory().getCurrentSession();
 		//démarrer une transaction
 		session.beginTransaction();
-		// Fetch contact
-		Query query = session.createQuery("from Contact");
-		Iterator contacts = query.iterate();
-		while(contacts.hasNext())
-		{
-			Contact c = (Contact) contacts.next();
-			System.out.println("nom="+c.getFirstName());
-		}
+		
+		// Fetch contact by id
+		contact = (Contact) session.get(Contact.class, id);
+		System.out.println("nom="+contact.getFirstName());
 		
 	}
 
@@ -162,8 +160,21 @@ public class DAOContact implements IDAOContact {
 	 * @see services.IDAOContact#delete(long)
 	 */
 	public void delete(long id) {
-
+		Contact contact = new Contact();
 		
+		//Obtention d’une session
+		Session session =
+		HibernateUtil.getSessionFactory().getCurrentSession();
+		//démarrer une transaction
+		session.beginTransaction();
+		
+		// Fetch contact by id
+		contact = (Contact) session.get(Contact.class, id);
+		
+		// Delete Contact number id
+		session.delete(contact);
+		session.getTransaction().commit();
+		System.out.println("Contact "+id+" deleted");
 	}
 
 
