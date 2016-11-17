@@ -5,7 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import domain.Address;
-
+import domain.Contact;
 
 public class ContactService {
 
@@ -40,13 +40,12 @@ public class ContactService {
 
 	/**************************************************************************************************************/
 	
-	public void research(long id) {
+	public Contact research(long id) {
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"applicationContext.xml"});
 		IDAOContact c = (IDAOContact) context.getBean("daocontact");
 		
-		c.research(id);
-		
+		return c.research(id);
 	}
 
 	public void update(long id, String firstname, String lastname, String mail) {

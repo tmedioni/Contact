@@ -1,5 +1,6 @@
 package servlets;
 
+import domain.Contact;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,11 +36,26 @@ public class ResearchContactServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		long id = Long.parseLong(request.getParameter("id"));
+		long id=0;
 		
-		//Forward input
+		try{
+			id = Long.parseLong(request.getParameter("id"));			
+		}catch(NumberFormatException ex){ // handle not a number exception
+			request.setAttribute("error", "The Id must be a number");
+			this.getServletContext().getRequestDispatcher("/ResearchContact.jsp").forward(request, response);			
+			return;
+		}		
+		
+		// search the contact
+		Contact contact = new Contact();
 		ContactService cs = new ContactService();
-		cs.research(id);
-		}
+		contact = cs.research(id);		
+		
+		// forward the result
+		request.setAttribute("contact", contact);
+		request.setAttribute("id", id);
+		
+		this.getServletContext().getRequestDispatcher("/ResearchContact.jsp").forward(request, response);
+	}
 
 }

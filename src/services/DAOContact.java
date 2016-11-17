@@ -2,8 +2,10 @@ package services;
 
 import java.util.Iterator;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import domain.Address;
 import domain.Contact;
@@ -134,19 +136,18 @@ public class DAOContact implements IDAOContact {
 	/* (non-Javadoc)
 	 * @see services.IDAOContact#research(long)
 	 */
-	public void research(long id) {
+	public Contact research(long id) {
 		Contact contact = new Contact();
 		
 		//Obtention d’une session
 		Session session =
-		HibernateUtil.getSessionFactory().getCurrentSession();
+		HibernateUtil.getSessionFactory().openSession();				
+				
 		//démarrer une transaction
 		session.beginTransaction();
-		
 		// Fetch contact by id
-		contact = (Contact) session.get(Contact.class, id);
-		System.out.println("nom="+contact.getFirstName());
-		
+		contact = (Contact) session.get(Contact.class, id);		
+		return contact;		
 	}
 
 	/* (non-Javadoc)
