@@ -6,6 +6,7 @@ import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import domain.Address;
 import domain.Contact;
@@ -13,7 +14,7 @@ import domain.Entreprise;
 import domain.PhoneNumber;
 import util.HibernateUtil;
 
-public class DAOContact implements IDAOContact {
+public class DAOContactHibernate extends HibernateDaoSupport implements IDAOContact {
 	
 
 
@@ -106,21 +107,7 @@ public class DAOContact implements IDAOContact {
 		address.setCountry(country);
 		
 		contact.setAdd(address);
-		
-		
 
-		
-		//Obtention d’une session
-		Session session =
-		HibernateUtil.getSessionFactory().getCurrentSession();
-		//démarrer une transaction
-		session.beginTransaction();
-		//persister l’objet
-
-
-		
-		
-		
 		PhoneNumber p = new PhoneNumber();
 		p.setPhoneKind("mobile");
 		p.setPhoneNumber(mobile);
@@ -136,18 +123,14 @@ public class DAOContact implements IDAOContact {
 		p.setPhoneNumber(bureau);
 		p.setContact(contact);
 		
-		session.save(contact);
 		
-		//recharger l’objet à partir de la session
-		contact=(Contact) session.load(Contact.class, contact.getId());
-		
-		try{
-			//committer la transaction
-			session.getTransaction().commit();
+		//try{
+			getHibernateTemplate().save(contact);
+			contact=(Contact) getHibernateTemplate().load(Contact.class, contact.getId());
 			return true;
-		}catch(Exception e){			
-			return false;
-		}
+		//}catch(Exception e){			
+		//	return false;
+		//}
 	}
 
 	/* (non-Javadoc)

@@ -1,12 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
 
-    <bean name="daocontact" class="services.DAOContact"/>
+    <bean name="daocontact" class="services.DAOContactHibernate">
+        <property name="sessionFactory" ref="mySessionFactory" />
+    </bean>
     
-    <bean name="daogroup" class="services.DAOGroup"/>
+    <bean name="daogroup" class="services.DAOGroupHibernate">
+        <property name="sessionFactory" ref="mySessionFactory" />
+    </bean>
     
+    <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost/contacts" />
+        <property name="username" value="root" />
+        <property name="password" value=""   />
     
+    </bean>
+    
+    <bean id="mySessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="myDataSource" />
+        <property name="mappingResources">
+            <list>
+                <value>domain/Contact.hbm.xml</value>
+                <value>domain/PhoneNumber.hbm.xml</value>
+                <value>domain/ContactGroup.hbm.xml</value>
+                <value>domain/Address.hbm.xml</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
+                <prop key="hibernate.connection.pool_size">1</prop>
+                <prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+                <prop key="hibernate.cache.use_second_level_cache">true</prop>
+            </props>
+        </property>
 
+              
+    </bean>
+    
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="mySessionFactory" />
+    </bean>
+    
+    <tx:advice id="txAdvice">
+        <tx:attributes>
+            <tx:method name="get*" read-only="true" timeout="-1" />
+            <tx:method name="sav*" propagation="REQUIRED" read-only="false" />
+            <tx:method name="find*" read-only="true" />
+            <tx:method name="*" propagation="REQUIRED" timeout="-1" />
+        </tx:attributes>
+    </tx:advice>
+    <aop:config>
+        <aop:advisor pointcut="execution(* services.*.*(..))" advice-ref="txAdvice" />
+    </aop:config>
+    
 </beans>

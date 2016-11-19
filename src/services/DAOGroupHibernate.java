@@ -1,12 +1,12 @@
 package services;
 
 import org.hibernate.Session;
-
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import domain.ContactGroup;
 import util.HibernateUtil;
 
-public class DAOGroup implements IDAOGroup {
+public class DAOGroupHibernate extends HibernateDaoSupport implements IDAOGroup {
 
 	/* (non-Javadoc)
 	 * @see services.IDAOGroup#create(java.lang.String)
