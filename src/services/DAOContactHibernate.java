@@ -1,11 +1,6 @@
 package services;
 
-import java.util.Iterator;
 
-import org.hibernate.Hibernate;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import domain.Address;
@@ -29,19 +24,13 @@ public class DAOContactHibernate extends HibernateDaoSupport implements IDAOCont
 		contact.setLastName(lastname);
 		contact.setEmail(email);
 		
-		//Obtention d’une session
-		Session session =
-		HibernateUtil.getSessionFactory().getCurrentSession();
-		//démarrer une transaction
-		session.beginTransaction();
-		//persister l’objet
-		session.save(contact);
-		//recharger l’objet à partir de la session
-		contact=(Contact) session.load(Contact.class, contact.getId());
+		
+		
 		
 		try{
-			//committer la transaction
-			session.getTransaction().commit();
+			getHibernateTemplate().save(contact);
+			contact=(Contact) getHibernateTemplate().load(Contact.class, contact.getId());
+
 			return true;
 		}catch(Exception e){
 			return false;
@@ -58,19 +47,13 @@ public class DAOContactHibernate extends HibernateDaoSupport implements IDAOCont
 		
 		contact.setAdd(add);
 		
-		//Obtention d’une session
-		Session session =
-		HibernateUtil.getSessionFactory().getCurrentSession();
-		//démarrer une transaction
-		session.beginTransaction();
-		//persister l’objet
-		session.save(contact);
-		//recharger l’objet à partir de la session
-		contact=(Contact) session.load(Contact.class, contact.getId());
+
+		
 		
 		try{
-			//committer la transaction
-			session.getTransaction().commit();
+			getHibernateTemplate().save(contact);
+			contact=(Contact) getHibernateTemplate().load(Contact.class, contact.getId());
+			
 			return true;
 		}catch(Exception e){
 			return false;
@@ -139,14 +122,8 @@ public class DAOContactHibernate extends HibernateDaoSupport implements IDAOCont
 	public Contact research(long id) {
 		Contact contact = new Contact();
 		
-		//Obtention d’une session
-		Session session =
-		HibernateUtil.getSessionFactory().openSession();				
 		
-		//démarrer une transaction
-		session.beginTransaction();
-		// Fetch contact by id
-		contact = (Contact) session.get(Contact.class, id);		
+		contact = (Contact) getHibernateTemplate().get(Contact.class, id);		
 		return contact;		
 	}
 
@@ -156,24 +133,17 @@ public class DAOContactHibernate extends HibernateDaoSupport implements IDAOCont
 	public boolean update(long id, String prenom, String nom, String mail) {
 		Contact contact = new Contact();
 		
-		//Obtention d’une session
-		Session session =
-		HibernateUtil.getSessionFactory().getCurrentSession();
-		//démarrer une transaction
-		session.beginTransaction();
-		
-		// Fetch contact by id
-		contact = (Contact) session.get(Contact.class, id);
+
+		contact = (Contact) getHibernateTemplate().get(Contact.class, id);
 		// Update contact infos
 		contact.setLastName(prenom);
 		contact.setFirstName(nom);
 		contact.setEmail(mail);
 		
-		// Delete Contact number id
-		session.update(contact);		
+			
 		try{
-			//committer la transaction
-			session.getTransaction().commit();
+			
+			getHibernateTemplate().update(contact);	
 			return true;
 		}catch(Exception e){
 			return false;
@@ -186,20 +156,13 @@ public class DAOContactHibernate extends HibernateDaoSupport implements IDAOCont
 	public boolean delete(long id) {
 		Contact contact = new Contact();
 		
-		//Obtention d’une session
-		Session session =
-		HibernateUtil.getSessionFactory().getCurrentSession();
-		//démarrer une transaction
-		session.beginTransaction();
+	
+		contact = (Contact) getHibernateTemplate().get(Contact.class, id);
 		
-		// Fetch contact by id
-		contact = (Contact) session.get(Contact.class, id);
 		
-		// Delete Contact number id
-		session.delete(contact);		
 		try{
-			//committer la transaction
-			session.getTransaction().commit();
+			// Delete Contact number id
+			getHibernateTemplate().delete(contact);		
 			return true;
 		}catch(Exception e){
 			return false;
