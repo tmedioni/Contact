@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
 import services.ContactService;
 
 /**
@@ -48,7 +50,7 @@ public class ResearchContactServlet extends HttpServlet {
 		
 		// search the contact
 		Contact contact = new Contact();
-		ContactService cs = new ContactService();
+		ContactService cs = new ContactService(WebApplicationContextUtils.getWebApplicationContext(getServletContext()));
 		contact = cs.research(id);		
 		
 		// forward the result

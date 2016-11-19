@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import domain.Contact;
 import services.ContactService;
@@ -37,7 +38,7 @@ public class TestingSpringServlet extends HttpServlet {
 		Contact c = (Contact) context.getBean("beanContact");
 		
 		
-		ContactService cs = new ContactService();
+		ContactService cs = new ContactService(WebApplicationContextUtils.getWebApplicationContext(getServletContext()));
 		
 		cs.create(c.getFirstName(), c.getLastName(), c.getEmail(), c.getAdd());
 		

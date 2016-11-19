@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
 /**
  * Servlet implementation class CreateContactServlet
  */
@@ -54,7 +56,7 @@ public class CreateContactServlet extends HttpServlet {
 		
 		String siret  = request.getParameter("siret");
 		
-		ContactService cs = new ContactService();
+		ContactService cs = new ContactService(WebApplicationContextUtils.getWebApplicationContext(getServletContext()));
 		if(cs.create(prenom, nom , mail, siret, street, city, zip, country, mobile, fixe, bureau))
 		{
 			System.out.println("done");

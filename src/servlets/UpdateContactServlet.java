@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
 import services.ContactService;
 
 /**
@@ -42,7 +44,7 @@ public class UpdateContactServlet extends HttpServlet {
 				
 				
 				//Forward input
-				ContactService cs = new ContactService();
+				ContactService cs = new ContactService(WebApplicationContextUtils.getWebApplicationContext(getServletContext()));
 				cs.update(id, prenom, nom , mail);
 	}
 

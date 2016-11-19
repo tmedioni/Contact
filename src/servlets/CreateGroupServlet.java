@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
 import services.ContactService;
 import services.GroupService;
 
@@ -38,7 +40,7 @@ public class CreateGroupServlet extends HttpServlet {
 		
 		String name = request.getParameter("name");
 		
-		GroupService gs = new GroupService();
+		GroupService gs = new GroupService(WebApplicationContextUtils.getWebApplicationContext(getServletContext()));
 		gs.create(name);
 		
 		response.sendRedirect("index.html");

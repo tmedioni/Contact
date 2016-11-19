@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
 import services.ContactService;
 
 /**
@@ -38,7 +40,7 @@ public class DeleteContactServlet extends HttpServlet {
 		long id = Long.parseLong(request.getParameter("id"));
 		
 		//Forward input
-		ContactService cs = new ContactService();
+		ContactService cs = new ContactService(WebApplicationContextUtils.getWebApplicationContext(getServletContext()));
 		cs.delete(id);
 	}
 
