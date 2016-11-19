@@ -11,31 +11,31 @@ public class ContactService {
 
 	/**********************************************************************************************************/
 	
-	public void create(String firstname, String lastname, String email)
+	public boolean create(String firstname, String lastname, String email)
 	{
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"applicationContext.xml"});
 		IDAOContact c = (IDAOContact) context.getBean("daocontact");
 		
-		c.create(firstname, lastname, email);
+		return c.create(firstname, lastname, email);
 	}
 
-	public void create(String firstname, String lastname, String email, Address add) {
+	public boolean create(String firstname, String lastname, String email, Address add) {
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"applicationContext.xml"});
 		IDAOContact c = (IDAOContact) context.getBean("daocontact");
 		
-		c.create(firstname, lastname, email, add);
+		return c.create(firstname, lastname, email, add);
 		
 	}
 	
-	public void create(String firstname, String lastname, String email, String siret,
+	public boolean create(String firstname, String lastname, String email, String siret,
 			String street, String city, String zip, String country, String mobile, String fixe, String bureau) {
 
 		ApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"applicationContext.xml"});
 		IDAOContact c = (IDAOContact) context.getBean("daocontact");
 		
-		c.create(firstname, lastname, email, siret, street, city, zip, country, mobile, fixe, bureau);
+		return c.create(firstname, lastname, email, siret, street, city, zip, country, mobile, fixe, bureau);
 	}
 
 	/**************************************************************************************************************/
@@ -48,22 +48,22 @@ public class ContactService {
 		return c.research(id);
 	}
 
-	public void update(long id, String firstname, String lastname, String mail) {
+	public boolean update(long id, String firstname, String lastname, String mail) {
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"applicationContext.xml"});
 		IDAOContact c = (IDAOContact) context.getBean("daocontact");
 		
-		c.update(id, firstname, lastname, mail);
+		return c.update(id, firstname, lastname, mail);
 		
 		
 	}
 
-	public void delete(long id) {
+	public boolean delete(long id) {
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"applicationContext.xml"});
 		IDAOContact c = (IDAOContact) context.getBean("daocontact");
 		
-		c.delete(id);
+		return c.delete(id);
 		
 	}
 

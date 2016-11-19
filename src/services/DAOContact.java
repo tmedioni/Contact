@@ -20,7 +20,7 @@ public class DAOContact implements IDAOContact {
 	/* (non-Javadoc)
 	 * @see services.IDAOContact#create(java.lang.String, java.lang.String, java.lang.String)
 	 */
-	public void create(String firstname, String lastname, String email)
+	public boolean create(String firstname, String lastname, String email)
 	{
 		Contact contact = new Contact();
 		
@@ -37,11 +37,17 @@ public class DAOContact implements IDAOContact {
 		session.save(contact);
 		//recharger l’objet à partir de la session
 		contact=(Contact) session.load(Contact.class, contact.getId());
-		//committer la transaction
-		session.getTransaction().commit();
+		
+		try{
+			//committer la transaction
+			session.getTransaction().commit();
+			return true;
+		}catch(Exception e){
+			return false;
+		}
 	}
 	
-	public void create(String firstname, String lastname, String email, Address add) {
+	public boolean create(String firstname, String lastname, String email, Address add) {
 		Contact contact = new Contact();
 		
 		contact.setFirstName(firstname);
@@ -60,16 +66,21 @@ public class DAOContact implements IDAOContact {
 		session.save(contact);
 		//recharger l’objet à partir de la session
 		contact=(Contact) session.load(Contact.class, contact.getId());
-		//committer la transaction
-		session.getTransaction().commit();
 		
+		try{
+			//committer la transaction
+			session.getTransaction().commit();
+			return true;
+		}catch(Exception e){
+			return false;
+		}
 	}
 	
 
 	/* (non-Javadoc)
 	 * @see services.IDAOContact#create(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
 	 */
-	public void create(String firstname, String lastname, String email, String siret, String street, String city, String zip,
+	public boolean create(String firstname, String lastname, String email, String siret, String street, String city, String zip,
 			String country, String mobile, String fixe, String bureau) {
 		assert(street != "" && city != ""  && zip != ""  && country != "" && mobile != "" && fixe != "" && bureau != "");
 		
@@ -129,8 +140,14 @@ public class DAOContact implements IDAOContact {
 		
 		//recharger l’objet à partir de la session
 		contact=(Contact) session.load(Contact.class, contact.getId());
-		//committer la transaction
-		session.getTransaction().commit();
+		
+		try{
+			//committer la transaction
+			session.getTransaction().commit();
+			return true;
+		}catch(Exception e){			
+			return false;
+		}
 	}
 
 	/* (non-Javadoc)
@@ -142,7 +159,7 @@ public class DAOContact implements IDAOContact {
 		//Obtention d’une session
 		Session session =
 		HibernateUtil.getSessionFactory().openSession();				
-				
+		
 		//démarrer une transaction
 		session.beginTransaction();
 		// Fetch contact by id
@@ -153,7 +170,7 @@ public class DAOContact implements IDAOContact {
 	/* (non-Javadoc)
 	 * @see services.IDAOContact#update(long, java.lang.String, java.lang.String, java.lang.String)
 	 */
-	public void update(long id, String prenom, String nom, String mail) {
+	public boolean update(long id, String prenom, String nom, String mail) {
 		Contact contact = new Contact();
 		
 		//Obtention d’une session
@@ -170,14 +187,20 @@ public class DAOContact implements IDAOContact {
 		contact.setEmail(mail);
 		
 		// Delete Contact number id
-		session.update(contact);
-		session.getTransaction().commit();		
+		session.update(contact);		
+		try{
+			//committer la transaction
+			session.getTransaction().commit();
+			return true;
+		}catch(Exception e){
+			return false;
+		}
 	}
 
 	/* (non-Javadoc)
 	 * @see services.IDAOContact#delete(long)
 	 */
-	public void delete(long id) {
+	public boolean delete(long id) {
 		Contact contact = new Contact();
 		
 		//Obtention d’une session
@@ -190,9 +213,14 @@ public class DAOContact implements IDAOContact {
 		contact = (Contact) session.get(Contact.class, id);
 		
 		// Delete Contact number id
-		session.delete(contact);
-		session.getTransaction().commit();
-		System.out.println("Contact "+id+" deleted");
+		session.delete(contact);		
+		try{
+			//committer la transaction
+			session.getTransaction().commit();
+			return true;
+		}catch(Exception e){
+			return false;
+		}
 	}
 
 

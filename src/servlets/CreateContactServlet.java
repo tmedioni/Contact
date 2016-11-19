@@ -55,10 +55,13 @@ public class CreateContactServlet extends HttpServlet {
 		String siret  = request.getParameter("siret");
 		
 		ContactService cs = new ContactService();
-		cs.create(prenom, nom , mail, siret, street, city, zip, country, mobile, fixe, bureau);
-		
+		if(cs.create(prenom, nom , mail, siret, street, city, zip, country, mobile, fixe, bureau))
+		{
+			System.out.println("done");
+		}else
+			System.out.println("Error while adding contact");
+			
 		response.sendRedirect("index.html");
-		
 	}
 
 }
