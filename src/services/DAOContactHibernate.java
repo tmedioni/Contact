@@ -124,13 +124,13 @@ public class DAOContactHibernate extends HibernateDaoSupport implements IDAOCont
 		p.setContact(contact);
 		
 		
-		//try{
+		try{
 			getHibernateTemplate().save(contact);
 			contact=(Contact) getHibernateTemplate().load(Contact.class, contact.getId());
 			return true;
-		//}catch(Exception e){			
-		//	return false;
-		//}
+		}catch(Exception e){			
+			return false;
+		}
 	}
 
 	/* (non-Javadoc)
