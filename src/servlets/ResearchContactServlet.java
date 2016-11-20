@@ -49,7 +49,7 @@ public class ResearchContactServlet extends HttpServlet {
 		}		
 		
 		// search the contact
-		Contact contact = new Contact();
+		Contact contact = null;
 		ContactService cs = new ContactService(WebApplicationContextUtils.getWebApplicationContext(getServletContext()));
 		contact = cs.research(id);		
 		

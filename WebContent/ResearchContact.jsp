@@ -26,15 +26,16 @@
 			<p>FirstName : ${contact.firstName} </p>
 			<p>LastName : ${contact.lastName} </p>
 			<p>Email : ${contact.email} </p>
-			<p>Address : ${contact.add.street} ${contact.add.city} ${contact.add.zip} ${contact.add.country} </p>
-			
+		    <%--
+		    <p>Address : ${contact.add.street} ${contact.add.city} ${contact.add.zip} ${contact.add.country} </p>
+			 
 			<c:forEach items="${contact.phones}" var="element">
 			  	<p>${element.phoneKind} : ${element.phoneNumber}</p>  
 			</c:forEach>
 			
 			<c:forEach items="${contact.books}" var="element">
 			  	<p>Groups : ${element.groupName}</p>  
-			</c:forEach>
+			</c:forEach> --%>
 		</c:otherwise>
 	</c:choose>
 </c:if>

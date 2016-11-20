@@ -43,6 +43,8 @@
                 <prop key="hibernate.connection.pool_size">1</prop>
                 <prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
                 <prop key="hibernate.cache.use_second_level_cache">true</prop>
+                <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+                <prop key="hibernate.generate_statistics">true</prop>
             </props>
         </property>
 
@@ -65,4 +67,15 @@
         <aop:advisor pointcut="execution(* services.*.*(..))" advice-ref="txAdvice" />
     </aop:config>
     
+    <bean id="jmxExporter" class="org.springframework.jmx.export.MBeanExporter">
+        <property name="beans">
+            <map>
+                <entry key="Hibernate:application=Statistics" value-ref="hibernateStatisticsBean"/>
+            </map>
+        </property>
+    </bean>
+    <bean id="hibernateStatisticsBean" class="util.HibernateStatisticsFactoryBean">
+        <property name="sessionFactory" ref="mySessionFactory"/>
+    </bean>
+           
 </beans>

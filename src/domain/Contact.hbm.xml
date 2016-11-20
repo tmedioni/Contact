@@ -3,6 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="domain">
   <class name="Contact" table="contacts" discriminator-value="C">
+     <cache usage="read-write"/>
   	 <id name="id" type="long" column="ID_CONTACT" >
    		<generator class="increment"/>
   	 </id>
@@ -10,13 +11,13 @@
   	 <discriminator column="subtype" type="character" />
   	 <version name="version" access="field" column="version" />
   	 
-  	 <property name="firstName" not-null="true">
+  	 <property lazy="false" name="firstName" not-null="true">
   	 	<column name="firstname" />
   	 </property>
-  	 <property name="lastName" not-null="true">
+  	 <property lazy="false" name="lastName" not-null="true">
   	 	<column name="lastname" />
   	 </property>
-  	 <property name="email" not-null="true">
+  	 <property lazy="false" name="email" not-null="true">
   	 	<column name="email" />
   	 </property>
    
