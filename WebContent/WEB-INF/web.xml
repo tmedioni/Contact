@@ -111,4 +111,20 @@
     <servlet-name>TestingSpringServlet</servlet-name>
     <url-pattern>/TestingSpringServlet</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>action</servlet-name>
+    <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+    <init-param>
+        <param-name>config</param-name>
+        <param-value>/WEB-INF/struts-config.xml</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+        <servlet-name>action</servlet-name>
+        <url-pattern>/*</url-pattern>
+  </servlet-mapping>
+
+  
+  
 </web-app>
