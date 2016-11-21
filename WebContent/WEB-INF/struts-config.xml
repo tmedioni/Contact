@@ -25,7 +25,7 @@
         <set-property property="processorClass" value="org.springframework.web.struts.DelegatingProcessor" />
     </controller>
     
-    <message-resources parameter="logon" null="false" />
+    <message-resources parameter="resources/logon" null="false" />
     
     <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
     <set-property property="contextConfigLocation"
