@@ -8,27 +8,21 @@
 <struts-config>
 
     <form-beans>
-       <form-bean name="LogonForm"
-        type="view.form.LogonForm"/>
+       <form-bean name="logonForm" type="view.form.LogonForm"/>
     </form-beans>
 
     <action-mappings>
-       <action path="/logon"
-        type="redirectAction"
-        name="LogonForm">
-        <forward name="success" path="/HelloWorld.jsp"/>
-
-       </action>
+       <action path="/logon" type="org.apache.struts.actions.ForwardAction" input="/index.jsp" name="logonForm" scope="request" validate="true" parameter="/main.jsp" />
     </action-mappings>
-    
+    <!-- 
     <controller>
-        <set-property property="processorClass" value="org.springframework.web.struts.DelegatingProcessor" />
+        <set-property property="processorClass" value="org.springframework.web.struts.DelegatingRequestProcessor" />
     </controller>
-    
+    -->
     <message-resources parameter="resources/logon" null="false" />
-    
+
     <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
-    <set-property property="contextConfigLocation"
-       value="/WEB-INF/applicationContext.xml"/>
+    <set-property property="contextConfigLocation" value="/WEB-INF/action-servlet.xml"/>
     </plug-in>
+
 </struts-config>

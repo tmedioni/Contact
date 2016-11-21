@@ -13,7 +13,7 @@
 
 <html:errors/>
 
-<html:form action="/logon" focus="username">
+<html:form action="/logon.do" focus="username">
 <table>
     <tr>
         <th class="right">

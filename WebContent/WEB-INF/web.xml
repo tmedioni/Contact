@@ -9,62 +9,6 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-
-  
-  <servlet>
-    <description></description>
-    <display-name>CreateContactServlet</display-name>
-    <servlet-name>CreateContactServlet</servlet-name>
-    <servlet-class>servlets.CreateContactServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CreateContactServlet</servlet-name>
-    <url-pattern>/CreateContactServlet</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-    <description></description>
-    <display-name>ResearchContactServlet</display-name>
-    <servlet-name>ResearchContactServlet</servlet-name>
-    <servlet-class>servlets.ResearchContactServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ResearchContactServlet</servlet-name>
-    <url-pattern>/ResearchContactServlet</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-    <description></description>
-    <display-name>UpdateContactServlet</display-name>
-    <servlet-name>UpdateContactServlet</servlet-name>
-    <servlet-class>servlets.UpdateContactServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>UpdateContactServlet</servlet-name>
-    <url-pattern>/UpdateContactServlet</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-    <description></description>
-    <display-name>DeleteContactServlet</display-name>
-    <servlet-name>DeleteContactServlet</servlet-name>
-    <servlet-class>servlets.DeleteContactServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DeleteContactServlet</servlet-name>
-    <url-pattern>/DeleteContactServlet</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-    <description></description>
-    <display-name>CreateGroupServlet</display-name>
-    <servlet-name>CreateGroupServlet</servlet-name>
-    <servlet-class>servlets.CreateGroupServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CreateGroupServlet</servlet-name>
-    <url-pattern>/CreateGroupServlet</url-pattern>
-  </servlet-mapping>
   
   <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -93,17 +37,6 @@
   </listener>
   
   <servlet>
-    <description></description>
-    <display-name>TestingSpringServlet</display-name>
-    <servlet-name>TestingSpringServlet</servlet-name>
-    <servlet-class>servlets.TestingSpringServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>TestingSpringServlet</servlet-name>
-    <url-pattern>/TestingSpringServlet</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
     <servlet-name>action</servlet-name>
     <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
     <init-param>
@@ -112,6 +45,7 @@
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
+  
   <servlet-mapping>
         <servlet-name>action</servlet-name>
         <url-pattern>*.do</url-pattern>
