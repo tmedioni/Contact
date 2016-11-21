@@ -7,6 +7,10 @@
 <title>
     <bean:message key="logon.title"/>
 </title>
+
+<!-- Latest compiled and minified CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 
 <body>

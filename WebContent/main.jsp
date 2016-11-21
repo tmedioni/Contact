@@ -1,20 +1,40 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" %>
+<%@ taglib uri="/WEB-INF/tld/struts-html.tld" prefix="html" %>
+<%@ taglib uri="/WEB-INF/tld/struts-bean.tld" prefix="bean" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html:html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>
+    <bean:message key="main.title"/>
+</title>
+
+<!-- Latest compiled and minified CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
 
-<a href="CreateContact.jsp">creer contact</a><br/>
+<!-- Add Contact -->
+<html:button property="create"><bean:message key="main.add.contact"/></html:button><br/>
+
+<!-- Quick Contact Search -->
 <a href="ResearchContact.jsp">rechercher contact</a><br/>
+<html:form>
+
+</html:form>
+
+<!-- Add Group -->
 <a href="CreateGroup.jsp">creer groupe</a><br/>
+
+
 <a href="UpdateContact.jsp">update contact</a><br/>
 <a href="DeleteContact.jsp">delete contact</a><br/>
 
-<a href="TestingSpringServlet">Test spring</a><br/>
-
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
 </body>
-</html>
+</html:html>
