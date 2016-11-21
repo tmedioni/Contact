@@ -9,12 +9,12 @@
 </title>
 </head>
 
-<body bgcolor="white">
+<body>
 
 <html:errors/>
 
 <html:form action="/logon" focus="username">
-<table border="0">
+<table>
     <tr>
         <th class="right">
             <bean:message key="prompt.username"/>
