@@ -84,6 +84,6 @@
         <property name="sessionFactory" ref="mySessionFactory"/>
     </bean>
            
-    <!--  Struts loader -->
+    <!--  Struts beans -->
  
 </beans>
