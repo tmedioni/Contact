@@ -35,7 +35,7 @@
 			<c:forEach items="${contact.phones}" var="element">
 			  	<p>${element.phoneKind} : ${element.phoneNumber}</p>  
 			</c:forEach>
-			
+			--%>
 			<c:forEach items="${contact.books}" var="element">
 			  	<p>Groups : ${element.groupName}</p>  
 			</c:forEach> --%>
