@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="/WEB-INF/tld/struts-html.tld" prefix="html"%>
+<%@ taglib uri="/WEB-INF/tld/struts-bean.tld" prefix="bean"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,12 +13,12 @@
 <body>
 
 
-<form method="post" action="ResearchContactServlet">
+<html:form action="researchContact">
 	identifiant : <br/>
-	<input type="text" name="id"><br/>
+	<html:text property="id"/><br/>
 	
-	<input type="submit" value="valider">
-</form>
+	<html:submit>Valider</html:submit>
+</html:form>
 
 <c:if test="${not empty error}"><h1>${error}</h1></c:if>
 <c:if test="${not empty id}">
