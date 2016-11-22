@@ -139,6 +139,9 @@ public class DAOContactHibernate extends HibernateDaoSupport implements IDAOCont
 		
 		if(contact.getBooks() != null)
 			getHibernateTemplate().initialize(contact.getBooks());
+		
+		if(contact.getPhones() != null)
+			getHibernateTemplate().initialize(contact.getPhones());
 		return contact;		
 	}
 
