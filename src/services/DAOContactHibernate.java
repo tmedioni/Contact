@@ -16,9 +16,18 @@ public class DAOContactHibernate extends HibernateDaoSupport implements IDAOCont
 	/* (non-Javadoc)
 	 * @see services.IDAOContact#create(java.lang.String, java.lang.String, java.lang.String)
 	 */
-	public boolean create(String firstname, String lastname, String email)
+	public boolean create(String firstname, String lastname, String email, String siret)
 	{
-		Contact contact = new Contact();
+		Contact contact;
+		
+		if(siret == null || siret.isEmpty())
+			contact = new Contact();
+		else 
+		{
+			Entreprise e = new Entreprise();
+			e.setNumSiret(siret);
+			contact = e;
+		}
 		
 		contact.setFirstName(firstname);
 		contact.setLastName(lastname);

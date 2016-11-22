@@ -5,7 +5,7 @@ import domain.Contact;
 
 public interface IDAOContact {
 
-	boolean create(String firstname, String lastname, String email);
+	boolean create(String firstname, String lastname, String email, String siret);
 
 	boolean create(String firstname, String lastname, String email, Address add);
 	

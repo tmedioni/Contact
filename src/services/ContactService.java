@@ -15,11 +15,11 @@ public class ContactService {
 	{
 		this.context = context;
 	}
-	public boolean create(String firstname, String lastname, String email)
+	public boolean create(String firstname, String lastname, String email, String siret)
 	{
 		IDAOContact c = (IDAOContact) context.getBean("daocontact");
 		
-		return c.create(firstname, lastname, email);
+		return c.create(firstname, lastname, email, siret);
 	}
 
 	public boolean create(String firstname, String lastname, String email, Address add) 
