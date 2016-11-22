@@ -11,6 +11,7 @@
        <form-bean name="logonForm" type="view.form.LogonForm"/>
        <form-bean name="addContactForm" type="view.form.AddContactForm" />
        <form-bean name="researchContactForm" type="view.form.ResearchContactForm" />
+       <form-bean name="addGroupForm" type="view.form.AddGroupForm"/>
     </form-beans>
 
     <action-mappings>
@@ -20,6 +21,9 @@
        </action>
        <action path="/researchContact" type="view.action.ResearchContactAction" input="/main.jsp" name="researchContactForm" scope="request" validate="true">
             <forward name="success" path="/ResearchContact.jsp" />
+       </action>
+       <action path="/addGroup" type="view.action.AddGroupAction" input="/main.jsp" name="addGroupForm" scope="request" validate="true">
+            <forward name="success" path="/main.jsp" />
        </action>
     </action-mappings>
     <!-- 

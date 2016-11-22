@@ -3,6 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="domain">
   <class name="Address" table="addresses">
+  <cache usage="read-write"/>
   	 <id name="id" type="long" column="ID_ADDRESS" >
    		<generator class="increment"/>
   	 </id>
