@@ -25,6 +25,9 @@
        <action path="/addGroup" type="view.action.AddGroupAction" input="/main.jsp" name="addGroupForm" scope="request" validate="true">
             <forward name="success" path="/main.jsp" />
        </action>
+       <action path="/deleteContact" type="view.action.DeleteContactAction" input="/main.jsp" name="researchContactForm" scope="request" validate="true">
+            <forward name="success" path="/main.jsp" />
+       </action>
     </action-mappings>
     <!-- 
     <controller>
