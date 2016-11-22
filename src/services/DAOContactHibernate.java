@@ -151,6 +151,8 @@ public class DAOContactHibernate extends HibernateDaoSupport implements IDAOCont
 
 		contact = (Contact) getHibernateTemplate().get(Contact.class, id);
 		// Update contact infos
+		if(contact == null)
+			return false;
 		contact.setLastName(prenom);
 		contact.setFirstName(nom);
 		contact.setEmail(mail);

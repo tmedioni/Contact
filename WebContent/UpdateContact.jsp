@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="/WEB-INF/tld/struts-html.tld" prefix="html"%>
+<%@ taglib uri="/WEB-INF/tld/struts-bean.tld" prefix="bean"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,18 +11,18 @@
 </head>
 <body>
 
-<form method="post" action="UpdateContactServlet">
+<html:form action="/updateContact">
 	identifiant : <br/>
-	<input type="text" name="id"><br/>
+	<html:text property="id"/><br/>
 	prenom : <br/>
-	<input type="text" name="prenom"><br/>
+	<html:text property="firstname"/><br/>
 	nom : <br/>
-	<input type="text" name="nom"><br/>
+	<html:text property="lastname"/><br/>
 	mail : <br/>
-	<input type="text" name="mail"><br/>
+	<html:text property="mail"/><br/>
 	
-	<input type="submit" value="valider">
-</form>
+	<html:submit value="valider" />
+</html:form>
 
 
 </body>
