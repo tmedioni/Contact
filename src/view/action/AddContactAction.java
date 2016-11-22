@@ -22,15 +22,23 @@ public class AddContactAction extends ActionSupport {
 		
 		try
 		{
+			String groupName = contactform.getGroupname();
+			if(groupName == null || groupName.length() < 1)
+			{
+				groupName = "Global";
+			}
+
 			ContactService cs = new ContactService(getWebApplicationContext());
 			if(contactform.getStreet() == null || contactform.getStreet().length() < 1)
 			{
-				cs.create(contactform.getFirstname(), contactform.getLastname(), contactform.getEmail(), contactform.getSiret());
+				cs.create(contactform.getFirstname(), contactform.getLastname(), contactform.getEmail(), contactform.getSiret()
+						, groupName);
 			}
 			else
 			{
 				cs.create(contactform.getFirstname(), contactform.getLastname(), contactform.getEmail(), contactform.getSiret(), contactform.getStreet(),
-						contactform.getCity(), contactform.getZipcode(), contactform.getCountry(), contactform.getMobile(), contactform.getFixe(), contactform.getBureau());
+						contactform.getCity(), contactform.getZipcode(), contactform.getCountry(), contactform.getMobile(), contactform.getFixe(), contactform.getBureau()
+						, groupName);
 			}
 			
 		} catch(Exception e)

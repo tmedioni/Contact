@@ -19,6 +19,7 @@ public class AddContactForm extends ActionForm {
 	private String country;
 	private String zipcode;
 	private String siret;
+	private String groupname;
 	
 	public String getFirstname() {
 		return firstname;
@@ -86,6 +87,12 @@ public class AddContactForm extends ActionForm {
 	public void setSiret(String siret) {
 		this.siret = siret;
 	}
+	public String getGroupname() {
+		return groupname;
+	}
+	public void setGroupname(String groupname) {
+		this.groupname = groupname;
+	}
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		firstname = null;
@@ -99,6 +106,7 @@ public class AddContactForm extends ActionForm {
 		country = null;
 		zipcode = null;
 		siret = null;
+		groupname =null;
 	}
 	@Override
 	public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) 
@@ -116,7 +124,7 @@ public class AddContactForm extends ActionForm {
 		if(email == null || email.length() < 1)
 		{
 			errors.add("email", new ActionMessage("error.email.required"));
-		}
+		}		
 		
 		if( (street == null || street.length() < 1)
 		    ||(city == null || city.length() < 1)
@@ -138,6 +146,7 @@ public class AddContactForm extends ActionForm {
 		
 		return errors;
 	}
+
 	
 	
 }

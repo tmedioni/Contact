@@ -17,27 +17,27 @@ public class ContactService {
 	{
 		this.context = context;
 	}
-	public boolean create(String firstname, String lastname, String email, String siret)
+	public boolean create(String firstname, String lastname, String email, String siret, String g)
 	{
 		IDAOContact c = (IDAOContact) context.getBean("daocontact");
 		
-		return c.create(firstname, lastname, email, siret);
+		return c.create(firstname, lastname, email, siret, g);
 	}
 
-	public boolean create(String firstname, String lastname, String email, Address add) 
-	{		
-		IDAOContact c = (IDAOContact) context.getBean("daocontact");
-		
-		return c.create(firstname, lastname, email, add);
-		
-	}
+//	public boolean create(String firstname, String lastname, String email, Address add, String g) 
+//	{		
+//		IDAOContact c = (IDAOContact) context.getBean("daocontact");
+//		
+//		return c.create(firstname, lastname, email, add, g);
+//		
+//	}
 	
 	public boolean create(String firstname, String lastname, String email, String siret,
-			String street, String city, String zip, String country, String mobile, String fixe, String bureau) {
+			String street, String city, String zip, String country, String mobile, String fixe, String bureau, String g) {
 
 		IDAOContact c = (IDAOContact) context.getBean("daocontact");
 		
-		return c.create(firstname, lastname, email, siret, street, city, zip, country, mobile, fixe, bureau);
+		return c.create(firstname, lastname, email, siret, street, city, zip, country, mobile, fixe, bureau, g);
 	}
 
 	/**************************************************************************************************************/

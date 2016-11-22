@@ -1,13 +1,16 @@
 package services;
 
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import domain.Address;
 import domain.Contact;
+import domain.ContactGroup;
 import domain.Entreprise;
 import domain.PhoneNumber;
 import util.HibernateUtil;
@@ -19,7 +22,7 @@ public class DAOContactHibernate extends HibernateDaoSupport implements IDAOCont
 	/* (non-Javadoc)
 	 * @see services.IDAOContact#create(java.lang.String, java.lang.String, java.lang.String)
 	 */
-	public boolean create(String firstname, String lastname, String email, String siret)
+	public boolean create(String firstname, String lastname, String email, String siret, String groupName)
 	{
 		Contact contact;
 		
@@ -31,13 +34,27 @@ public class DAOContactHibernate extends HibernateDaoSupport implements IDAOCont
 			e.setNumSiret(siret);
 			contact = e;
 		}
-		
+	
 		contact.setFirstName(firstname);
 		contact.setLastName(lastname);
 		contact.setEmail(email);
 		
+		ContactGroup group = new ContactGroup();	
+		List<ContactGroup> g = (List<ContactGroup>) getHibernateTemplate().find("from ContactGroup where groupName=?", groupName);
+		if(g.isEmpty())
+		{			
+			group.setGroupName(groupName);
+			getHibernateTemplate().save(group);
+			group=(ContactGroup) getHibernateTemplate().load(ContactGroup.class, group.getGroupId());
+		}
+		else
+		{
+			group = g.get(0);
+		}
 		
-		
+		Set<ContactGroup> gg = new HashSet<ContactGroup>();
+		gg.add(group);
+		contact.setBooks(gg);
 		
 		try{
 			getHibernateTemplate().save(contact);
@@ -77,7 +94,7 @@ public class DAOContactHibernate extends HibernateDaoSupport implements IDAOCont
 	 * @see services.IDAOContact#create(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
 	 */
 	public boolean create(String firstname, String lastname, String email, String siret, String street, String city, String zip,
-			String country, String mobile, String fixe, String bureau) {
+			String country, String mobile, String fixe, String bureau, String groupName) {
 		assert(street != "" && city != ""  && zip != ""  && country != "" && mobile != "" && fixe != "" && bureau != "");
 		
 		Contact contact;
@@ -118,6 +135,22 @@ public class DAOContactHibernate extends HibernateDaoSupport implements IDAOCont
 		p.setPhoneNumber(bureau);
 		p.setContact(contact);
 		
+		ContactGroup group = new ContactGroup();	
+		List<ContactGroup> g = (List<ContactGroup>) getHibernateTemplate().find("from ContactGroup where groupName=?", groupName);
+		if(g.isEmpty())
+		{			
+			group.setGroupName(groupName);
+			getHibernateTemplate().save(group);
+			group=(ContactGroup) getHibernateTemplate().load(ContactGroup.class, group.getGroupId());
+		}
+		else
+		{
+			group = g.get(0);
+		}
+		
+		Set<ContactGroup> gg = new HashSet<ContactGroup>();
+		gg.add(group);
+		contact.setBooks(gg);
 		
 		try{
 			getHibernateTemplate().save(contact);

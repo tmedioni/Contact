@@ -7,12 +7,12 @@ import domain.Contact;
 
 public interface IDAOContact {
 
-	boolean create(String firstname, String lastname, String email, String siret);
+	boolean create(String firstname, String lastname, String email, String siret, String groupName);
 
 	boolean create(String firstname, String lastname, String email, Address add);
 	
 	boolean create(String firstname, String lastname, String email, String siret, String street, String city, String zip,
-			String country, String mobile, String fixe, String bureau);
+			String country, String mobile, String fixe, String bureau, String groupName);
 
 	Contact research(long id);
 

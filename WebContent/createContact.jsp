@@ -33,97 +33,114 @@
 -->
 
 
-	<h4 class="modal-title">
-		<bean:message key="main.add.contact.title" />
-	</h4>
 
-
+<div class="container">
 	<html:form styleClass="form-horizontal" action="/addContact">
+	<div class="form-group">
+			<h4 class="control-label col-sm-5"><bean:message
+					key="main.add.contact.title" />:</h4>
+		</div>
+		
 		<div class="form-group">
 			<label class="control-label col-sm-3"><bean:message
 					key="main.add.contact.firstname" />:</label>
-			<div class="col-sm-9">
+			<div class="col-sm-6">
 				<html:text styleClass="form-control" property="firstname" />
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-sm-3" for="lastname"><bean:message
 					key="main.add.contact.lastname" />:</label>
-			<div class="col-sm-9">
+			<div class="col-sm-6">
 				<html:text styleClass="form-control" property="lastname" />
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-sm-3" for="email"><bean:message
 					key="main.add.contact.email" />:</label>
-			<div class="col-sm-9">
+			<div class="col-sm-6">
 				<html:text styleClass="form-control" property="email" />
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-sm-3" for="mobile"><bean:message
 					key="main.add.contact.mobile" />:</label>
-			<div class="col-sm-9">
+			<div class="col-sm-6">
 				<html:text styleClass="form-control" property="mobile" />
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-sm-3" for="fixe"><bean:message
 					key="main.add.contact.fixe" />:</label>
-			<div class="col-sm-9">
+			<div class="col-sm-6">
 				<html:text styleClass="form-control" property="fixe" />
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-sm-3" for="bureau"><bean:message
 					key="main.add.contact.bureau" />:</label>
-			<div class="col-sm-9">
+			<div class="col-sm-6">
 				<html:text styleClass="form-control" property="bureau" />
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-sm-3" for="street"><bean:message
 					key="main.add.contact.street" />:</label>
-			<div class="col-sm-9">
+			<div class="col-sm-6">
 				<html:text styleClass="form-control" property="street" />
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-sm-3" for="city"><bean:message
 					key="main.add.contact.city" />:</label>
-			<div class="col-sm-9">
+			<div class="col-sm-6">
 				<html:text styleClass="form-control" property="city" />
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-sm-3" for="country"><bean:message
 					key="main.add.contact.country" />:</label>
-			<div class="col-sm-9">
+			<div class="col-sm-6">
 				<html:text styleClass="form-control" property="country" />
+			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-sm-3" for="zipcode"><bean:message
 					key="main.add.contact.zipcode" />:</label>
-			<div class="col-sm-9">
+			<div class="col-sm-6">
 				<html:text styleClass="form-control" property="zipcode" />
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-sm-3" for="siret"><bean:message
 					key="main.add.contact.siret" />:</label>
-			<div class="col-sm-9">
+			<div class="col-sm-6">
 				<html:text styleClass="form-control" property="siret" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-3" for="groupname"><bean:message
+					key="main.add.contact.groupname" />:</label>
+			<div class="col-sm-6">
+				<html:text styleClass="form-control" property="groupname" />
 			</div>
 		</div>
 
 
-
-		<html:submit styleClass="btn btn-success" property="add">
-			<bean:message key="main.submit" />
-		</html:submit>
+		
+		<div class="form-group">
+   			<label class="col-md-4 control-label" for="singlebutton"></label>
+   			<div class="col-md-4 center-block">
+			<html:submit styleClass="btn btn-success" property="add">
+				<bean:message key="main.submit" />
+			</html:submit>
+		</div>
+		</div>
+	
+		
 	</html:form>
 
-
+</div>
 
 
 </body>
