@@ -23,12 +23,13 @@
 		</div>
         <!--  error display -->
        
-        <html:errors />
+        <html:errors /><br/>
 
 		<!-- Add Contact -->
 		<html:link href="createContact.jsp">
 			<bean:message key="main.add.contact.button" />
 		</html:link>
+		
 		<!-- Contact modal -->
 		<div id="addContact" class="modal fade" role="dialog">
 			<div class="modal-dialog modal-lg">
