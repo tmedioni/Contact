@@ -1,5 +1,7 @@
 package services;
 
+import java.util.List;
+
 import domain.Address;
 import domain.Contact;
 
@@ -17,5 +19,5 @@ public interface IDAOContact {
 	boolean update(long id, String prenom, String nom, String mail);
 
 	boolean delete(long id);
-
+	public List<Contact> list(int param, int choix);
 }

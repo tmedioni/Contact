@@ -1,6 +1,8 @@
 package services;
 
 
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
@@ -64,5 +66,11 @@ public class ContactService {
 		
 	}
 
+	public List<Contact> list(int param, int choix) {
+		
+		IDAOContact c = (IDAOContact) context.getBean("daocontact");
+		
+		return c.list(param, choix);
+	}
 	
 }

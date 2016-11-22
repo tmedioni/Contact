@@ -1,6 +1,9 @@
 package services;
 
 
+import java.util.List;
+
+import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import domain.Address;
@@ -189,7 +192,30 @@ public class DAOContactHibernate extends HibernateDaoSupport implements IDAOCont
 		}
 	}
 
-
 	
-
+	public List<Contact> list(int param, int choix) {
+		String simpleHql = "FROM Contact";
+		String paramHql = "FROM Contact WHERE id=?";
+		List<Contact> contacts;
+		
+		if(choix==0)
+			contacts= (List<Contact>) getHibernateTemplate().find(simpleHql);
+		else
+		if(choix==1)
+			contacts = (List<Contact>) getHibernateTemplate().find(paramHql, (long)param);		
+		else
+			if(choix==2)
+			{
+				DetachedCriteria criteria= DetachedCriteria.forClass(Contact.class, "Contact");
+		
+				contacts = (List<Contact>) getHibernateTemplate().findByCriteria(criteria, 0, param);
+			}
+		else
+		{		
+			Contact contact = new Contact();
+			contact.setFirstName("etienne");		
+			contacts = (List<Contact>) getHibernateTemplate().findByExample(contact);
+		}
+		return contacts;	
+	}
 }

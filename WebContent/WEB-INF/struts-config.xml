@@ -14,6 +14,7 @@
        <form-bean name="addGroupForm" type="view.form.AddGroupForm"/>
        <form-bean name="updateContactForm" type="view.form.UpdateContactForm"></form-bean>
        <form-bean name="testingSpring" type="view.form.TestingSpringForm"></form-bean>
+       <form-bean name="listContactForm" type="view.form.ListContactForm" />
     </form-beans>
 
     <action-mappings>
@@ -35,6 +36,9 @@
        </action>
        <action path="/updateContact" type="view.action.UpdateContactAction" input="/main.jsp" name="updateContactForm" scope="request" validate="true">
             <forward name="success" path="/main.jsp" />
+       </action>
+       <action path="/listContact" type="view.action.ListContactAction" input="/main.jsp" name="listContactForm" scope="request" validate="true">
+            <forward name="success" path="/ListContact.jsp" />
        </action>
     </action-mappings>
     <!-- 

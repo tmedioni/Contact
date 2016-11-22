@@ -158,6 +158,7 @@
 		<a href="CreateGroup.jsp">creer groupe</a> <br /> <a
 			href="UpdateContact.jsp">update contact</a> <br /> <a
 			href="DeleteContact.jsp">delete contact</a> <br />
+			<a href="ListContact.jsp">Liste contact</a> <br />
 			<html:link action="/testSpring">tester dataset spring</html:link>
 	</div>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
