@@ -29,9 +29,9 @@
 			<p>FirstName : ${contact.firstName} </p>
 			<p>LastName : ${contact.lastName} </p>
 			<p>Email : ${contact.email} </p>
-		    <%--
+		    
 		    <p>Address : ${contact.add.street} ${contact.add.city} ${contact.add.zip} ${contact.add.country} </p>
-			 
+			 <%--
 			<c:forEach items="${contact.phones}" var="element">
 			  	<p>${element.phoneKind} : ${element.phoneNumber}</p>  
 			</c:forEach>
